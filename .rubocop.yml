@@ -1,3 +1,12 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - db/**
+    - config/**
+    - bin/**
+
 Metrics/LineLength:
   StyleGuide: '#120-character-limits'
   Enabled: true
