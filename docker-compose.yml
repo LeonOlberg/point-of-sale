@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: point-of-sale-postgres
+    hostname: postgres
+    image: postgres:10.5
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ''
+      POSTGRES_DB: 'point_of_sale_development'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql
+
+volumes:
+  postgres:

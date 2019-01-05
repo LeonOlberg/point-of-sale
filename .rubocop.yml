@@ -1,0 +1,4 @@
+Metrics/LineLength:
+  StyleGuide: '#120-character-limits'
+  Enabled: true
+  Max: 120
