@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+gem 'ar-uuid', '~> 0.2.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails', '~> 2.5'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -12,6 +13,7 @@ gem 'rails', '~> 5.2.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
   gem 'rubocop', '~> 0.62.0'
 end
 
