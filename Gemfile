@@ -7,9 +7,11 @@ ruby '2.5.1'
 gem 'ar-uuid', '~> 0.2.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails', '~> 2.5'
+gem 'ffi-geos', '~> 2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
+gem 'rgeo-geojson', '~> 2.1', '>= 2.1.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

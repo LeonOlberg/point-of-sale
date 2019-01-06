@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.1
+        environment:
+          BUNDLER_VERSION: 2.0.1
     working_directory: ~/point-of-sale
     steps:
         - checkout
@@ -12,9 +14,17 @@ jobs:
               - v1-dependencies-{{ checksum "Gemfile.lock" }}
               - v1-dependencies-
 
+        - type: shell
+          name: Install GEOS
+          command: sudo apt install libgeos-dev -y
+
+        - type: shell
+          name: Update Bundler
+          command: sudo gem update --system && sudo gem uninstall bundler && sudo rm /usr/local/bin/bundle && sudo rm /usr/local/bin/bundler && sudo gem install bundler
+
         - run:
             name: Bundle Install
-            command: bundle check || bundle install
+            command: bundle install
 
         - save_cache:
             paths:
@@ -22,9 +32,9 @@ jobs:
             key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
         - type: shell
-          name: Run Rspec
+          name: Run tests
           command: bundle exec rspec --profile 10
 
         - type: shell
-          name: Run rubocop
+          name: Run linter and code style checker
           command: bundle exec rubocop -c .rubocop.yml || true
