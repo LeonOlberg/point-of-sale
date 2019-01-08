@@ -3,7 +3,32 @@ AllCops:
     - db/**/*
     - config/**/*
     - bin/**/*
-    - spec/**/*
+    - vendor/**/*
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Style/BracesAroundHashParameters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Metrics/MethodLength:
+  Max: 30
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Metrics/ClassLength:
+  Max: 130
+  Exclude:
+    - 'spec/**/*_spec.rb'
 
 Metrics/LineLength:
   StyleGuide: '#120-character-limits'
