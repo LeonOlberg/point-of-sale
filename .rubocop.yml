@@ -1,13 +1,17 @@
 AllCops:
-  Include:
-    - Rakefile
-    - config.ru
   Exclude:
-    - db/**
-    - config/**
-    - bin/**
+    - db/**/*
+    - config/**/*
+    - bin/**/*
+    - spec/**/*
 
 Metrics/LineLength:
   StyleGuide: '#120-character-limits'
   Enabled: true
   Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
