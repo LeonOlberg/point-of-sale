@@ -1,11 +1,23 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/point-of-sale
     docker:
       - image: circleci/ruby:2.5.1
         environment:
           BUNDLER_VERSION: 2.0.1
-    working_directory: ~/point-of-sale
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          DATABASE_USERNAME: root
+          DATABASE_PASSWORD: ''
+          DATABASE_HOST: 127.0.0.1
+      - image: circleci/postgres:10.5
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: point_of_sale_test
+          POSTGRES_PASSWORD: ''
     steps:
         - checkout
 
@@ -23,13 +35,30 @@ jobs:
           command: sudo gem update --system && sudo gem uninstall bundler && sudo rm /usr/local/bin/bundle && sudo rm /usr/local/bin/bundler && sudo gem install bundler
 
         - run:
-            name: Bundle Install
-            command: bundle install
+            name: Install dependencies
+            command: |
+              set -e
+              bundle install --deployment --path vendor/bundle
 
         - save_cache:
             paths:
               - ./vendor/bundle
             key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+        - run:
+            name: Install postgresql-client
+            command: |
+              echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+              wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+              sudo apt-get update; sudo apt-get install postgresql-client-10
+
+        - run:
+            name: Wait for DB
+            command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+        - run:
+            name: Database setup
+            command: bin/rails db:structure:load
 
         - type: shell
           name: Run tests

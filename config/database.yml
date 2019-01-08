@@ -10,6 +10,10 @@ development:
   <<: *default
   database: point_of_sale_development
 
+test:
+  <<: *default
+  database: point_of_sale_test
+
 production:
   <<: *default
   database: point_of_sale_production
