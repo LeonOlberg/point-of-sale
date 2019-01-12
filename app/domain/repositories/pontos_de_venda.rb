@@ -7,7 +7,7 @@ module Repositories
     end
 
     def save(domain)
-      domain.save
+      domain if domain.save
     end
 
     def find_by_id(id)

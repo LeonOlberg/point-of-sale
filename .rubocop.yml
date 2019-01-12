@@ -40,3 +40,18 @@ Style/Documentation:
 
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Rails/HttpStatus:
+  EnforcedStyle: numeric
+
+Rails/DynamicFindBy:
+  Enabled: false

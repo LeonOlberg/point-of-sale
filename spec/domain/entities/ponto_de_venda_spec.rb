@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Entities::PontoDeVenda, type: :model do
+describe Entities::PontoDeVenda, type: :entity do
   context 'when building a ponto de venda' do
     context 'when all information was given' do
       it 'builds a new ponto de venda' do

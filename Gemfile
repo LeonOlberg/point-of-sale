@@ -12,10 +12,12 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 gem 'rgeo-geojson', '~> 2.1', '>= 2.1.1'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'validates_cpf_cnpj', '~> 0.2.0'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
   gem 'pry', '~> 0.12.2'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
   gem 'rubocop', '~> 0.62.0'
@@ -26,5 +28,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

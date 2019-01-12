@@ -7,5 +7,13 @@ module Entities
     validates :document, presence: true, cnpj: true
     validates :coverage_area, presence: true
     validates :address, presence: true
+
+    def address_json
+      JSON.parse(address)
+    end
+
+    def coverage_area_json
+      JSON.parse(coverage_area)
+    end
   end
 end

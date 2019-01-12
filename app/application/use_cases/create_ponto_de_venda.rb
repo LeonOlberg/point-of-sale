@@ -14,7 +14,7 @@ module UseCases
     def perform(trading_name: nil, owner_name: nil, document: nil, coverage_area: nil, address: nil)
       ponto_de_venda = build_ponto_de_venda(trading_name, owner_name, document, coverage_area, address)
 
-      @pontos_de_venda_repository.save(ponto_de_venda) if ponto_de_venda
+      persist_ponto_de_venda(ponto_de_venda)
     end
 
     private
@@ -27,6 +27,12 @@ module UseCases
         coverage_area: coverage_area,
         address: address
       )
+    end
+
+    def persist_ponto_de_venda(ponto_de_venda)
+      created_ponto_de_venda = @pontos_de_venda_repository.save(ponto_de_venda)
+
+      created_ponto_de_venda
     end
   end
 end
