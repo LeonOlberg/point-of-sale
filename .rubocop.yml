@@ -50,6 +50,9 @@ Style/SymbolArray:
 Style/AndOr:
   EnforcedStyle: conditionals
 
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+
 Rails/HttpStatus:
   EnforcedStyle: numeric
 
