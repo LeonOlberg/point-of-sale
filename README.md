@@ -6,7 +6,7 @@ Point Of Sale
 Sistema para armazenar, consultar e buscar pontos de venda baseados em latitude e longitude
 
 ### Do começo
-A aplicação é baseada nas seguintes técnologias:
+A aplicação é baseada nas seguintes tecnologias:
  * Ruby
  * PostgreSql
  * Docker
